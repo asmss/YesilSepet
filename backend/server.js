@@ -76,6 +76,9 @@ app.get("/anasayfa", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+res.end("ana sayfa")
+});
 
 app.listen(port, (error) => {
   if (error) {

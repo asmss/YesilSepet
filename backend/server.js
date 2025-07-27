@@ -77,7 +77,8 @@ app.get("/anasayfa", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.end("SUNUCU ANA SAYFADA AKTİF")
+  res.render("login")
+
 });
 
 app.listen(port, (error) => {

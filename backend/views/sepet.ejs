@@ -50,7 +50,6 @@
           sepetDiv.appendChild(div);
         });
       document.getElementById("toplam-fiyat").textContent = `TOPLAM FİYAT : ${topfiyat.toFixed(2)}`
-        // Sil butonları
         document.querySelectorAll(".sil-btn").forEach(button => {
           button.addEventListener("click", () => {
             const cart_id = button.getAttribute("data-id");
@@ -65,7 +64,6 @@
           });
         });
 
-        // Artırma butonları
         document.querySelectorAll(".adet-artir").forEach(button => {
           button.addEventListener("click", () => {
             const cart_id = button.getAttribute("data-cart-id");
@@ -91,7 +89,6 @@
           });
         });
 
-        // Azaltma butonları
         document.querySelectorAll(".adet-azalt").forEach(button => {
           button.addEventListener("click", () => {
             const cart_id = button.getAttribute("data-cart-id");

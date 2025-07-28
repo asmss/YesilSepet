@@ -3,7 +3,6 @@ const router = express.Router();
 const isAdmin = require("../middleware/isAdmin");
 const db = require("../config/db");
 
-// Tüm ürünleri getir
 router.get("/products", isAdmin, async (req, res) => {
   try {
     const [products] = await db.query("SELECT * FROM products");
@@ -13,12 +12,10 @@ router.get("/products", isAdmin, async (req, res) => {
   }
 });
 
-// Yeni ürün ekleme sayfası
 router.get("/products/new", isAdmin, (req, res) => {
   res.render("admin/newProduct");
 });
 
-// Yeni ürün ekleme işlemi
 router.post("/products", isAdmin, async (req, res) => {
   const { name, description,image, price, stock } = req.body;
   try {
@@ -32,7 +29,6 @@ router.post("/products", isAdmin, async (req, res) => {
   }
 });
 
-// Ürün silme işlemi 
 router.delete("/products/delete/:id", isAdmin, async (req, res) => {
   const product_id = req.params.id;
   try {
@@ -43,7 +39,6 @@ router.delete("/products/delete/:id", isAdmin, async (req, res) => {
   }
 });
 
-// Güncelleme formu göster
 router.get("/products/edit/:id", isAdmin, async (req, res) => {
   const { id } = req.params;
   try {
@@ -58,7 +53,6 @@ router.get("/products/edit/:id", isAdmin, async (req, res) => {
   }
 });
 
-// Güncelleme işlemi
 router.put("/products/:id", isAdmin, async (req, res) => {
   const { id } = req.params;
   const { name, description, price,image, stock } = req.body;

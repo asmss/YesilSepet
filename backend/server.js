@@ -1,7 +1,7 @@
 const express = require("express")
 const app = express()
 const connect = require("../backend/config/db")
-const db = require("../backend/config/db") // eksikti: db bağlantısını kullanıyoruz
+const db = require("../backend/config/db") 
 require('dotenv').config()
 const path = require("path")
 const productRoute = require("../backend/routes/product")
@@ -26,7 +26,7 @@ app.use(session({
   }
 }));
 const port = process.env.PORT || 3000;
-app.use(express.urlencoded({ extended: true })); // Form verileri için
+app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '..', 'backend', 'public')));
 app.set('views', path.join(__dirname, '..', 'backend', 'views'));
@@ -71,18 +71,17 @@ app.get("/anasayfa", async (req, res) => {
     const [products] = await db.query("SELECT * FROM products");
     res.render("index", { products }); 
   } catch (error) {
-    console.error("Ürünler çekilirken hata:", error);
+    console.error("Ürünler çekilirken hata oldu", error);
     res.status(500).send("Sunucu hatası");
   }
 });
 
 app.get("/", (req, res) => {
-res.end("ana sayfa")
+res.end("ana sayfa /login yaz sonra giriş yap")
 });
 
 app.listen(port, (error) => {
   if (error) {
     console.log("sunucuya bağlanırken hata oluştu\n", error)
   }
-  console.log("http://localhost:" + port + "/")
 })

@@ -23,7 +23,7 @@ router.post("/register", async (req, res) => {
   try {
     const [existingUser] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
     if (existingUser.length > 0) {
-      return res.status(400).json({ message: "Bu e-posta zaten kayıtlı." });
+      return res.status(400).json({ message: "Bu e-posta zaten kayıtlı!!!!!" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
       hashedPassword,
     ]);
 
-    return res.status(201).json({ message: "Kayıt başarılı, giriş yapabilirsiniz." });
+    return res.status(201).json({ message: "Kayıt başarılı !! giriş yapabilirsiniz." });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Kayıt sırasında bir hata oluştu." });
@@ -71,7 +71,6 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// Çıkış
 router.post("/logout", (req, res) => {
   req.session.destroy(err => {
     if (err) return res.status(500).send("Çıkış yapılamadı");

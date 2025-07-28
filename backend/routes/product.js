@@ -13,7 +13,6 @@ router.get("/listele", authMiddleware, async (req, res) => {
   }
 });
 
-// Ürün ekleme 
 router.post("/ekle", async (req, res) => {
   const { name, description, price, image, stock } = req.body;
   try {
@@ -28,7 +27,6 @@ router.post("/ekle", async (req, res) => {
   }
 });
 
-// Ürün güncelleme
 router.post("/update/:id", async (req, res) => {
   const { id } = req.params;
   const { name, description, price, image, stock } = req.body;
@@ -44,7 +42,6 @@ router.post("/update/:id", async (req, res) => {
   }
 });
 
-// Ürün silme
 router.post("/delete/:id", async (req, res) => {
   const { id } = req.params;
   try {
